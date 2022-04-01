@@ -2,13 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { API } from '../../shared/api';
 
-export const fetchCurrency = createAsyncThunk(
-  'wallet/fetchCurrency',
-  async () => {
-    const response = await API();
-    return Object.keys(response);
-  },
-);
+export const fetchCurrency = createAsyncThunk('wallet/fetchCurrency', async () => {
+  const response = await API();
+  return Object.keys(response);
+});
 
 const initialState = {
   currencies: [],
@@ -33,8 +30,9 @@ const wallet = createSlice({
       state.idToEdit = findTarget;
     },
     actionSaveEdit(state, { payload }) {
-      state.expenses = state.expenses
-        .map((each) => (each.id === state.idToEdit.id ? payload : each));
+      state.expenses = state.expenses.map((each) =>
+        each.id === state.idToEdit.id ? payload : each,
+      );
       state.editor = false;
       state.idToEdit = 0;
     },

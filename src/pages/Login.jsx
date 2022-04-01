@@ -35,18 +35,18 @@ const Login = ({ history: { push } }) => {
           name="email"
           data-testid="email-input"
           type="email"
-          value={ email }
-          onChange={ handleChange }
+          value={email}
+          onChange={handleChange}
         />
         <input
           label="Password"
           name="password"
           data-testid="password-input"
           type="password"
-          value={ password }
-          onChange={ handleChange }
+          value={password}
+          onChange={handleChange}
         />
-        <button disabled={ hasDisabled } onClick={ handleSubmit } type="submit">
+        <button disabled={hasDisabled} onClick={handleSubmit} type="submit">
           Entrar
         </button>
       </form>

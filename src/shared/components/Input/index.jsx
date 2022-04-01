@@ -5,15 +5,15 @@ import * as S from './style';
 
 const Input = ({ testid, type, label, name, onChange, value }) => (
   <div>
-    <S.InputLabel htmlFor={ name }>{label}</S.InputLabel>
+    <S.InputLabel htmlFor={name}>{label}</S.InputLabel>
     <S.Input
-      value={ value }
+      value={value}
       required
-      data-testid={ testid }
-      name={ name }
-      id={ name }
-      type={ type }
-      onChange={ onChange }
+      data-testid={testid}
+      name={name}
+      id={name}
+      type={type}
+      onChange={onChange}
     />
   </div>
 );

@@ -52,63 +52,57 @@ const Form = () => {
   return (
     <form>
       <Input
-        value={ formData.value }
+        value={formData.value}
         testid="value-input"
         name="value"
         label="Valor"
         type="number"
-        register={ register }
-        onChange={ handleChange }
+        register={register}
+        onChange={handleChange}
       />
 
       <Input
-        value={ formData.description }
+        value={formData.description}
         testid="description-input"
         name="description"
         label="Descrição"
         type="text"
-        register={ register }
-        onChange={ handleChange }
+        register={register}
+        onChange={handleChange}
       />
       <Select
-        value={ formData.currency }
+        value={formData.currency}
         testid="currency-input"
         name="currency"
         label="Moeda"
-        options={ currencies }
-        register={ register }
-        onChange={ handleChange }
+        options={currencies}
+        register={register}
+        onChange={handleChange}
       />
       <Select
-        value={ formData.method }
+        value={formData.method}
         testid="method-input"
         name="method"
         label="Método de pagamento"
-        options={ method }
-        register={ register }
-        onChange={ handleChange }
+        options={method}
+        register={register}
+        onChange={handleChange}
       />
       <Select
-        value={ formData.tag }
+        value={formData.tag}
         testid="tag-input"
         name="tag"
         label="Tag"
-        options={ tag }
-        register={ register }
-        onChange={ handleChange }
+        options={tag}
+        register={register}
+        onChange={handleChange}
       />
       {!editor ? (
-        <button
-          onClick={ onSubmit }
-          type="button"
-        >
+        <button onClick={onSubmit} type="button">
           Adicionar despesa
         </button>
       ) : (
-        <button
-          onClick={ submitEdits }
-          type="button"
-        >
+        <button onClick={submitEdits} type="button">
           Editar despesa
         </button>
       )}

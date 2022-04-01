@@ -3,7 +3,7 @@
     "browser": true,
     "es2020": true
   },
-  "extends": "trybe-frontend",
+  "extends": ["trybe-frontend", "prettier/react", "prettier"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
@@ -11,10 +11,9 @@
     },
     "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react", "prettier"],
   "rules": {
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "react/state-in-constructor": "off",
     "react/no-did-mount-set-state": "off",
     "react/no-did-update-set-state": "warn"

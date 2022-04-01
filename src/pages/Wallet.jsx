@@ -2,8 +2,8 @@ import React, { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Form from '../core/Form';
+import Table from '../core/Table';
 import Header from '../shared/components/Header';
-import Table from '../shared/components/Table';
 import { fetchCurrency } from '../store/reducers/wallet.reducer';
 
 const Wallet = () => {

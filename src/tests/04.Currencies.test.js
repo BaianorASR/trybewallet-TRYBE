@@ -1,8 +1,9 @@
-import React from 'react';
 import { waitFor } from '@testing-library/react';
-import { response as mockData } from './mocks/mockData';
+import React from 'react';
+
 import Wallet from '../pages/Wallet';
 import { renderWithRouterAndStore } from './helpers/testConfig';
+import { response as mockData } from './mocks/mockData';
 
 const apiResponse = Promise.resolve({
   json: () => Promise.resolve(mockData),

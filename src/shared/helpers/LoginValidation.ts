@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-unsafe-regex */
 export const validations = (email: string, password: string) => {
   const regex = /^[\w-\\.]+@([\w-]+.)+[\w-]{2,4}$/g;
   const MIN_CARACTERES = 5;

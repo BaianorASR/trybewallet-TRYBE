@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from '../Login';
-import Wallet from '../Wallet';
+import Login from '../Login/Login';
+import Wallet from '../Wallet/Wallet';
 
-const AppRoutes = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/carteira' element={<Wallet />} />
-    </Routes>
-  </BrowserRouter>
-);
+function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/carteira" element={<Wallet />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default AppRoutes;

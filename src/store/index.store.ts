@@ -5,8 +5,8 @@ import user from './reducers/user.reducer';
 import wallet from './reducers/wallet.reducer';
 
 const store = configureStore({
-	reducer: {user, wallet},
-	devTools: true,
+  reducer: { user, wallet },
+  devTools: true,
 });
 
 export type AppDispatch = typeof store.dispatch;

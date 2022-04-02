@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React from 'react';
 
 import * as S from './style';
 
@@ -7,30 +7,31 @@ type SelectProps = {
   label: string;
   options: string[];
   name: string;
-  onChange: () => void;
+  onChange: ({ target: { value, name } }: React.ChangeEvent<HTMLSelectElement>) => void;
   value: string;
 };
 
-const Select: FC<SelectProps> = ({ testid, label, options, name, onChange, value }) => (
-  <div>
-    <S.Label htmlFor={name}>
-      {label}
-      <select
-        value={value}
-        onChange={onChange}
+function Select({ testid, label, options, name, onChange, value }: SelectProps) {
+  return (
+    <S.SelectControl>
+      <S.Label htmlFor={name}>{label}</S.Label>
+      <S.Select
         required
+        value={value}
         data-testid={testid}
         name={name}
         id={name}
+        onChange={onChange}
       >
-        {options.map((each, i) => (
-          <option key={i} value={each}>
+        <option hidden disabled selected value=""></option>
+        {options.map(each => (
+          <option key={each} value={each}>
             {each}
           </option>
         ))}
-      </select>
-    </S.Label>
-  </div>
-);
+      </S.Select>
+    </S.SelectControl>
+  );
+}
 
 export default Select;

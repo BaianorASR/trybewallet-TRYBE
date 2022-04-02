@@ -1,12 +1,11 @@
-import { FC, useCallback, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, memo, useCallback, useEffect, useState } from 'react';
 
 import { API } from '../../shared/api';
 import Input from '../../shared/components/Input';
 import Select from '../../shared/components/Select';
-import { useAppSelector } from '../../store/index.store';
+import { useAppDispatch, useAppSelector } from '../../store/index.store';
 import { actionSaveEdit, actionsSetExpenses } from '../../store/reducers/wallet.reducer';
+import * as S from './styles';
 
 const Form: FC = () => {
   const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
@@ -18,25 +17,22 @@ const Form: FC = () => {
     method: '',
     tag: '',
   };
-
-  const { currencies, expenses, idToEdit, editor } = useAppSelector(
-    (state) => state.wallet,
+  const { currencies, expenses, currentEdit, editor } = useAppSelector(
+    state => state.wallet,
   );
-
-  const dispatch = useDispatch();
-
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initialState);
 
   const editExpense = useCallback(() => {
-    setFormData(idToEdit);
-  }, [idToEdit]);
+    currentEdit && setFormData(currentEdit);
+  }, [currentEdit]);
 
   useEffect(() => {
     if (editor) editExpense();
   }, [editExpense, editor]);
 
   const onSubmit = async () => {
-    const sync = { id: expenses.length, ...formData, exchangeRates: await API() };
+    const sync = { id: expenses?.length, ...formData, exchangeRates: await API() };
     dispatch(actionsSetExpenses(sync));
     setFormData(initialState);
   };
@@ -46,12 +42,14 @@ const Form: FC = () => {
     setFormData(initialState);
   };
 
-  const handleChange = ({ target: { value, name } }) => {
-    setFormData((previous) => ({ ...previous, [name]: value }));
+  const handleChange = ({
+    target: { value, name },
+  }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData(previous => ({ ...previous, [name]: value }));
   };
 
   return (
-    <form>
+    <S.FormContainer>
       <Input
         value={formData.value}
         testid="value-input"
@@ -94,15 +92,16 @@ const Form: FC = () => {
         onChange={handleChange}
       />
       {!editor ? (
-        <button onClick={onSubmit} type="button">
+        <S.FormButton onClick={onSubmit} type="button">
           Adicionar despesa
-        </button>
+        </S.FormButton>
       ) : (
-        <button onClick={submitEdits} type="button">
+        <S.FormButton onClick={submitEdits} type="button">
           Editar despesa
-        </button>
+        </S.FormButton>
       )}
-    </form>
+    </S.FormContainer>
   );
 };
-export default Form;
+
+export default memo(Form);

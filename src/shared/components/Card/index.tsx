@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../../store/index.store';
 import * as A from '../../../store/reducers';
 
 const Card: FC = () => {
-  const { expenses } = useAppSelector((state) => state.wallet);
+  const { expenses } = useAppSelector(state => state.wallet);
   const dispatch = useAppDispatch();
 
   const deleteExpense = (id: number) => {
@@ -17,15 +17,19 @@ const Card: FC = () => {
 
   return (
     <>
-      {expenses.map((each) => (
+      {expenses?.map(each => (
         <tr key={each.id}>
           <td>{each.description}</td>
           <td>{each.tag}</td>
           <td>{each.method}</td>
-          <td>{(+each.value).toFixed(2)}</td>
+          <td>{Number(each.value).toFixed(2)}</td>
           <td>{each.exchangeRates[each.currency].name}</td>
-          <td>{(+each.exchangeRates[each.currency].ask).toFixed(2)}</td>
-          <td>{(+each.value * +each.exchangeRates[each.currency].ask).toFixed(2)}</td>
+          <td>{Number(each.exchangeRates[each.currency].ask).toFixed(2)}</td>
+          <td>
+            {(Number(each.value) * Number(each.exchangeRates[each.currency].ask)).toFixed(
+              2,
+            )}
+          </td>
           <td>Real</td>
           <td>
             <button type="button" onClick={() => editExpense(each.id)}>
@@ -41,4 +45,4 @@ const Card: FC = () => {
   );
 };
 
-export default Card;
+export default memo(Card);

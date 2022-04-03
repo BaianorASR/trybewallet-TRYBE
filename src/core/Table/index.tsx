@@ -1,27 +1,33 @@
-import React, { FC, memo } from 'react';
+import React from 'react';
+import DataTable from 'react-data-table-component';
 
-import Card from '../../shared/components/Card';
-import * as S from './styles';
+import { useExpenses } from '../../shared/hooks/useExpenses';
+import useTheme from '../../shared/hooks/useTheme';
+import { darkTable, lightTable } from './styles';
 
-const Table: FC = () => {
+export default function Table() {
+  const { columns, data } = useExpenses();
+  const { theme } = useTheme();
+
+  const paginationComponentOptions = {
+    rowsPerPageText: 'Filas por página',
+    rangeSeparatorText: 'de',
+    selectAllRowsItem: true,
+    selectAllRowsItemText: 'Todos',
+  };
+
   return (
-    <S.TableContainer>
-      <S.TableHead>
-        <S.TableRow>
-          <S.TableTh>Descrição</S.TableTh>
-          <S.TableTh>Tag</S.TableTh>
-          <S.TableTh>Método de pagamento</S.TableTh>
-          <S.TableTh>Valor</S.TableTh>
-          <S.TableTh>Moeda</S.TableTh>
-          <S.TableTh>Câmbio utilizado</S.TableTh>
-          <S.TableTh>Valor convertido</S.TableTh>
-          <S.TableTh>Moeda de conversão</S.TableTh>
-          <S.TableTh>Editar/Excluir</S.TableTh>
-        </S.TableRow>
-      </S.TableHead>
-      <Card />
-    </S.TableContainer>
+    <DataTable
+      title="Minha Carteira"
+      columns={columns}
+      data={data}
+      theme={theme.name === 'dark' ? darkTable : lightTable}
+      paginationComponentOptions={paginationComponentOptions}
+      pagination
+      highlightOnHover
+      dense
+      fixedHeader
+      fixedHeaderScrollHeight="400px"
+    />
   );
-};
-
-export default memo(Table);
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 export const API = () =>
   fetch('https://economia.awesomeapi.com.br/json/all')
     .then(response => response.json())

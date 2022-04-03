@@ -1,5 +1,6 @@
 import React, { FC, memo, useCallback, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { v4 as uuidv4 } from 'uuid';
 
 import { API } from '../../shared/api';
 import Input from '../../shared/components/Input';
@@ -22,16 +23,9 @@ const Form: FC = () => {
   const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
   const method = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
 
-  const { currencies, expenses, currentEdit, editor } = useAppSelector(
-    state => state.wallet,
-  );
+  const { currencies, currentEdit, editor } = useAppSelector(state => state.wallet);
   const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<TFormData>();
+  const { register, handleSubmit, reset } = useForm<TFormData>();
 
   const editExpense = useCallback(() => {
     currentEdit && reset(currentEdit);
@@ -43,7 +37,7 @@ const Form: FC = () => {
 
   const onSubmit: SubmitHandler<TFormData> = async (data, event) => {
     event?.target.reset();
-    const sync = { id: expenses?.length, ...data, exchangeRates: await API() };
+    const sync = { id: uuidv4(), ...data, exchangeRates: await API() };
     dispatch(actionsSetExpenses(sync));
   };
 
@@ -54,21 +48,16 @@ const Form: FC = () => {
 
   return (
     <S.FormContainer onSubmit={handleSubmit(editor ? onEdit : onSubmit)}>
-      <Input {...{ register, errors }} name="value" label="Valor" type="number" />
-      <Input {...{ register, errors }} name="description" label="Descrição" type="text" />
+      <Input {...{ register }} name="value" label="Valor" type="number" />
+      <Input {...{ register }} name="description" label="Descrição" type="text" />
+      <Select {...{ register }} name="currency" label="Moeda" options={currencies} />
       <Select
-        {...{ register, errors }}
-        name="currency"
-        label="Moeda"
-        options={currencies}
-      />
-      <Select
-        {...{ register, errors }}
+        {...{ register }}
         name="method"
         label="Método de pagamento"
         options={method}
       />
-      <Select {...{ register, errors }} name="tag" label="Tag" options={tag} />
+      <Select {...{ register }} name="tag" label="Tag" options={tag} />
       <S.FormButton type="submit">
         {editor ? 'Editar despesa' : 'Adicionar despesa'}
       </S.FormButton>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Switch from 'react-switch';
 
-import useTheme from '../../shared/hooks/theme';
+import useTheme from '../../shared/hooks/useTheme';
 import { useAppSelector } from '../../store/index.store';
 import * as S from './styles';
 

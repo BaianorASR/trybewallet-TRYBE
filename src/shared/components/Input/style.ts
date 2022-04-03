@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 
 export const InputControl = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
+  gap: 5px;
+
   position: relative;
 `;
 
@@ -13,11 +16,9 @@ export const Input = styled.input`
     color: ${theme.text.default};
   `}
   flex-grow: 1;
-
   outline: none;
   border-radius: 2px;
   border: none;
-  width: 100%;
   padding: 0.5rem;
 
   filter: brightness(0.8);

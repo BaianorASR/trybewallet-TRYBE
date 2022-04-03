@@ -1,23 +1,59 @@
-import styled, { css } from 'styled-components';
+import { createTheme } from 'react-data-table-component';
 
-export const TableContainer = styled.table`
-  width: 100%;
-`;
+createTheme(
+  'lightTable',
+  {
+    text: {
+      primary: '#F5F5F5',
+      secondary: '#F7F5F2',
+    },
+    background: {
+      default: '#1A535C',
+    },
+    divider: {
+      default: '#174a52',
+    },
+    highlightOnHover: {
+      default: '#174a52',
+      text: '#F5F5F5',
+    },
+    button: {
+      default: '#35BCB3',
+      focus: '#2fa9a1',
+      hover: '#2fa9a1',
+    },
+  },
+  'light',
+);
 
-export const TableHead = styled.thead`
-  ${({ theme }) => css`
-    background-color: ${theme.primary};
-    color: ${theme.text.alt};
-  `}
-  overflow-x: scroll;
-  font-size: 0.9rem;
-`;
+createTheme(
+  'darkTable',
+  {
+    text: {
+      primary: '#222831',
+      secondary: '#0D292E',
+    },
+    background: {
+      default: '#35BCB3',
+    },
+    divider: {
+      default: '#2fa9a1',
+    },
+    highlightOnHover: {
+      default: '#2fa9a1',
+      text: '#222831',
+    },
+    button: {
+      default: '#1A535C',
+      focus: '#174a52',
+      hover: '#174a52',
+      disabled: '#2fa9a1',
+    },
+  },
+  'dark',
+);
 
-export const TableRow = styled.tr`
-  max-height: 10px;
-`;
+const darkTable = 'darkTable';
+const lightTable = 'lightTable';
 
-export const TableTh = styled.th`
-  padding: 5px 0;
-  width: 10px;
-`;
+export { lightTable, darkTable };

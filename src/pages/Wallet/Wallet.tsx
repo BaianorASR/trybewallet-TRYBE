@@ -18,8 +18,8 @@ const Wallet = () => {
   return (
     <LayoutWallet>
       <Header />
+      <Form />
       <S.WalletMain>
-        <Form />
         <Table />
       </S.WalletMain>
     </LayoutWallet>

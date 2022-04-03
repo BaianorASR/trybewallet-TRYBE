@@ -2,7 +2,8 @@ import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { dark, light } from '../../../styles/themes';
-import { Theme } from '../../../styles/themes/styled';
+
+import type { Theme } from '../../../styles/themes/styled';
 
 type ThemeContextType = {
   theme: Theme;

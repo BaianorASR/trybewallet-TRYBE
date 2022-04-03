@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 
 import { TFormData } from '../../../core/Form';
 import * as S from './style';
@@ -10,25 +10,13 @@ type InputProps = {
   name: 'value' | 'description' | 'currency' | 'method' | 'tag';
 
   register: UseFormRegister<TFormData>;
-  errors: FieldErrors<TFormData>;
 };
 
-function Input({ type, label, name, register, errors }: InputProps) {
+function Input({ type, label, name, register }: InputProps) {
   return (
     <S.InputControl>
       <S.InputLabel htmlFor={name}>{label}</S.InputLabel>
-      <S.Input
-        id={name}
-        type={type}
-        {...register(name, {
-          required: 'preencha esta campo!',
-          minLength: {
-            value: 5,
-            message: 'comprimento mínimo de 5 carácteres',
-          },
-        })}
-      />
-      {errors[name] && <S.ErrTooltip>{errors[name]?.message}</S.ErrTooltip>}
+      <S.Input id={name} type={type} {...register(name)} />
     </S.InputControl>
   );
 }

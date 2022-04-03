@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 export type expenses = {
-  id: number;
+  id: string;
   value: string;
   currency: string;
   method: string;

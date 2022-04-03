@@ -2,7 +2,9 @@
 import light_bg from '../../assets/images/light_bg.svg';
 
 export const light = {
+  name: 'light',
   image: light_bg,
+
   background: '#F7F5F2',
 
   primary: '#1A535C',

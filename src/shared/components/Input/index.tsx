@@ -1,29 +1,34 @@
 import React from 'react';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
+import { TFormData } from '../../../core/Form';
 import * as S from './style';
 
 type InputProps = {
-  testid: string;
   type: string;
   label: string;
-  name: string;
-  onChange: ({ target: { value, name } }: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
+  name: 'value' | 'description' | 'currency' | 'method' | 'tag';
+
+  register: UseFormRegister<TFormData>;
+  errors: FieldErrors<TFormData>;
 };
 
-function Input({ testid, type, label, name, onChange, value }: InputProps) {
+function Input({ type, label, name, register, errors }: InputProps) {
   return (
     <S.InputControl>
+      <S.InputLabel htmlFor={name}>{label}</S.InputLabel>
       <S.Input
-        required
-        value={value}
-        data-testid={testid}
-        name={name}
         id={name}
         type={type}
-        onChange={onChange}
+        {...register(name, {
+          required: 'preencha esta campo!',
+          minLength: {
+            value: 5,
+            message: 'comprimento mínimo de 5 carácteres',
+          },
+        })}
       />
-      <S.InputLabel htmlFor={name}>{label}</S.InputLabel>
+      {errors[name] && <S.ErrTooltip>{errors[name]?.message}</S.ErrTooltip>}
     </S.InputControl>
   );
 }

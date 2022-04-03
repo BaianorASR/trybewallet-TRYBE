@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -8,13 +8,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    color: ${({ theme }) => theme.text.default};
-    font: 300 16px 'Roboto', sans-serif;
-    background-image: url(${({ theme }) => theme.image});
-    background-size: cover;
-    background-position: center;
-    width: 100vw;
-    height: 100vh;
+    ${({ theme }) => css`
+      color: ${theme.text.default};
+      background-image: url(${theme.image});
+    `}
+      font: 300 16px 'Roboto', sans-serif;
+      background-size: cover;
+      background-position: center;
+      width: 100vw;
+      height: 100vh;
   }
 
 `;

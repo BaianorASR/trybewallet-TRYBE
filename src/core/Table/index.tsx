@@ -6,20 +6,20 @@ import * as S from './styles';
 const Table: FC = () => {
   return (
     <S.TableContainer>
-      <thead>
-        <tr>
-          <th scope="col">Descrição</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Método de pagamento</th>
-          <th scope="col">Valor</th>
-          <th scope="col">Moeda</th>
-          <th scope="col">Câmbio utilizado</th>
-          <th scope="col">Valor convertido</th>
-          <th scope="col">Moeda de conversão</th>
-          <th scope="col">Editar/Excluir</th>
-        </tr>
-        <Card />
-      </thead>
+      <S.TableHead>
+        <S.TableRow>
+          <S.TableTh>Descrição</S.TableTh>
+          <S.TableTh>Tag</S.TableTh>
+          <S.TableTh>Método de pagamento</S.TableTh>
+          <S.TableTh>Valor</S.TableTh>
+          <S.TableTh>Moeda</S.TableTh>
+          <S.TableTh>Câmbio utilizado</S.TableTh>
+          <S.TableTh>Valor convertido</S.TableTh>
+          <S.TableTh>Moeda de conversão</S.TableTh>
+          <S.TableTh>Editar/Excluir</S.TableTh>
+        </S.TableRow>
+      </S.TableHead>
+      <Card />
     </S.TableContainer>
   );
 };

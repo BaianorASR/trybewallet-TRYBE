@@ -23,7 +23,7 @@ export const LoginForm = styled.form`
     9.2px 11.4px 16.5px -2.5px hsl(0deg 0% 63% / 0.36);
   border-radius: 5px;
 
-  background-color: ${props => props.theme.background};
+  background-color: ${props => props.theme.secondary};
 `;
 
 export const LoginTitle = styled.h1`
@@ -80,8 +80,8 @@ export const LoginButton = styled.button.attrs({ type: 'button' })`
     0.8px 0.9px 1.4px -1.2px hsl(0deg 0% 63% / 0.34),
     1.8px 2.3px 3.3px -2.5px hsl(0deg 0% 63% / 0.34);
 
-  background-color: ${props => props.theme.secondary};
-  color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.colors.blue};
+  color: ${props => props.theme.background};
 
   font: 500 1rem 'Roboto', sans-serif;
 

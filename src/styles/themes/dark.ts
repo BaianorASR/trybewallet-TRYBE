@@ -2,6 +2,7 @@
 import dark_bg from '../../assets/images/dark_bg.svg';
 
 export const dark = {
+  name: 'dark',
   image: dark_bg,
 
   background: '#0D292E',

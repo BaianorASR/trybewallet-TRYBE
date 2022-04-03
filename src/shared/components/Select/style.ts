@@ -6,7 +6,10 @@ export const SelectControl = styled.div`
   align-items: flex-start;
 `;
 
-export const Label = styled.label``;
+export const Label = styled.label`
+  font-size: 0.8rem;
+  font-weight: 400;
+`;
 
 export const Select = styled.select`
   flex-grow: 0;

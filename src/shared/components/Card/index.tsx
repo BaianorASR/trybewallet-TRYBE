@@ -2,6 +2,7 @@ import React, { FC, memo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../../store/index.store';
 import * as A from '../../../store/reducers';
+import * as S from './styles';
 
 const Card: FC = () => {
   const { expenses } = useAppSelector(state => state.wallet);
@@ -15,20 +16,37 @@ const Card: FC = () => {
     dispatch(A.actionsEditExpense(id));
   };
 
+  // const LocaleCoin = (value: number) => {
+  //   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  // };
+
   return (
-    <>
+    <S.TableBody>
       {expenses?.map(each => (
-        <tr key={each.id}>
+        <S.TableRow key={each.id}>
           <td>{each.description}</td>
           <td>{each.tag}</td>
           <td>{each.method}</td>
-          <td>{Number(each.value).toFixed(2)}</td>
-          <td>{each.exchangeRates[each.currency].name}</td>
-          <td>{Number(each.exchangeRates[each.currency].ask).toFixed(2)}</td>
           <td>
-            {(Number(each.value) * Number(each.exchangeRates[each.currency].ask)).toFixed(
-              2,
-            )}
+            {Number(each.value).toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </td>
+          <td>{each.exchangeRates[each.currency].name.split('/')[0]}</td>
+          <td>
+            {Number(each.exchangeRates[each.currency].ask).toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </td>
+          <td>
+            {(
+              Number(each.value) * Number(each.exchangeRates[each.currency].ask)
+            ).toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
           </td>
           <td>Real</td>
           <td>
@@ -39,9 +57,9 @@ const Card: FC = () => {
               Excluir
             </button>
           </td>
-        </tr>
+        </S.TableRow>
       ))}
-    </>
+    </S.TableBody>
   );
 };
 

@@ -1,37 +1,50 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const InputControl = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
   position: relative;
 `;
 
 export const Input = styled.input`
-  outline: none;
-  width: 100%;
+  ${({ theme }) => css`
+    background: ${theme.secondary};
+    border-bottom: 2x solid ${theme.primary};
+    color: ${theme.text.default};
+  `}
   flex-grow: 1;
-  padding: 1.2rem 0.5rem 0.2rem 0.5rem;
-  font-size: 1rem;
-  background: ${props => props.theme.secondary};
-  border-bottom: 2x solid ${props => props.theme.primary};
-  filter: brightness(0.8);
+
+  outline: none;
+  border-radius: 2px;
   border: none;
+  width: 100%;
+  padding: 0.5rem;
+
+  filter: brightness(0.8);
+  font-size: 1rem;
 `;
 
 export const InputLabel = styled.label`
-  font-size: 1rem;
-  position: absolute;
-  left: 10px;
-  bottom: 5px;
-  z-index: 2;
+  font-size: 0.8rem;
+  font-weight: 400;
   transition: transform 0.3s ease;
+`;
 
-  ${Input}:focus ~ &,
-  ${Input}:valid ~ & {
-    transition: transform 0.3s ease;
-    transform: translateY(-18px);
-    font-size: 0.7rem;
-    font-weight: 500;
-  }
+export const ErrTooltip = styled.span`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.red};
+    color: ${theme.text.alt};
+    border: 1px solid ${theme.secondary};
+  `}
+  top: -10px;
+  border-radius: 2px;
+  right: -15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.2rem;
+  position: absolute;
+  z-index: 2;
 `;

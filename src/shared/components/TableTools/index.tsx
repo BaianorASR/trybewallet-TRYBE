@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { RiDeleteBin7Fill, RiEditFill } from 'react-icons/ri';
 
 import { useAppDispatch } from '../../../store/index.store';
@@ -8,11 +8,11 @@ type TableToolsProps = {
   id: string;
 };
 
-export function TableTools({ id }: TableToolsProps) {
+export const TableTools: FC<TableToolsProps> = ({ id }: TableToolsProps) => {
   const dispatch = useAppDispatch();
 
-  const deleteExpense = () => dispatch(A.actionsRemoveExpense(id));
-  const editExpense = () => dispatch(A.actionsEditExpense(id));
+  const deleteExpense = () => dispatch(A.actionRemoveExpense(id));
+  const editExpense = () => dispatch(A.actionEditExpense(id));
 
   return (
     <>
@@ -20,4 +20,4 @@ export function TableTools({ id }: TableToolsProps) {
       <RiDeleteBin7Fill onClick={deleteExpense} />
     </>
   );
-}
+};

@@ -8,6 +8,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 1rem;
   height: 75px;
+  z-index: 2;
 `;
 
 export const HeaderTitle = styled.h1`
@@ -22,3 +23,11 @@ export const HeaderLogo = styled(SiDogecoin)`
   color: ${props => props.theme.secondary};
   font-size: 2rem;
 `;
+
+export const HeaderLeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const HeaderEmail = styled.p``;

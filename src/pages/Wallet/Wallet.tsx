@@ -1,9 +1,7 @@
 import React, { memo, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Form from '../../core/Form';
-import Header from '../../core/Header';
-import Table from '../../core/Table';
+import { Form, Header, Table } from '../../core';
 import { fetchCurrency } from '../../store/reducers/wallet.reducer';
 import LayoutWallet from '../../styles/layouts/Wallet';
 import * as S from './styles';

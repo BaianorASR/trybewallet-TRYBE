@@ -14,6 +14,7 @@ export const dark = {
     default: '#F5F5F5',
     alt: '#222831',
   },
+  shadow: '1px 4px 4px -2px rgba(5, 5, 5, 0.88)',
 
   colors: {
     red: '#FF6464',

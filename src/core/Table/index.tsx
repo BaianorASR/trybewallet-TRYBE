@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import DataTable from 'react-data-table-component';
 
-import { useExpenses } from '../../shared/hooks/useExpenses';
-import useTheme from '../../shared/hooks/useTheme';
+import { useExpenses, useTheme } from '../../shared/hooks';
 import { darkTable, lightTable } from './styles';
 
-export default function Table() {
+const Table = () => {
   const { columns, data } = useExpenses();
   const { theme } = useTheme();
 
@@ -30,4 +29,6 @@ export default function Table() {
       fixedHeaderScrollHeight="400px"
     />
   );
-}
+};
+
+export default memo(Table);

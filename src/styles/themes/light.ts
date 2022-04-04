@@ -14,6 +14,7 @@ export const light = {
     default: '#222831',
     alt: '#F5F5F5',
   },
+  shadow: '1px 4px 4px -2px rgba(52, 44, 48, 0.4)',
 
   colors: {
     red: '#FF6B6B',

@@ -39,10 +39,10 @@ export const ErrTooltip = styled.span`
   `}
   top: -10px;
   border-radius: 2px;
-  right: -15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  right: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   font-size: 0.8rem;
   font-weight: 400;
   padding: 0.2rem;

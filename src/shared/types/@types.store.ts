@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-export type expenses = {
+export type Expenses = {
   id: string;
   value: string;
   currency: string;
@@ -22,3 +21,5 @@ export type expenses = {
     };
   };
 };
+
+export type FormSubmitExpense = Omit<Expenses, 'exchangeRates'>;

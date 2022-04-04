@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
+import { MdNightlight, MdWbSunny } from 'react-icons/md';
 import Switch from 'react-switch';
 
-import useTheme from '../../shared/hooks/useTheme';
+import { useTheme } from '../../shared/hooks';
 import { useAppSelector } from '../../store/index.store';
 import * as S from './styles';
 
@@ -28,13 +29,23 @@ const Header: FC = () => {
         BaiWallet
         <S.HeaderLogo />
       </S.HeaderTitle>
-      <div>
-        <Switch onChange={toggleTheme} checked={theme.name === 'dark'} />
-        <h2 data-testid="email-field">{email}</h2>
+      <S.HeaderLeftContainer>
+        <Switch
+          name="Switch"
+          onChange={toggleTheme}
+          checked={theme.name === 'dark'}
+          onColor="#1A535C"
+          width={30}
+          height={16}
+          handleDiameter={10}
+          checkedIcon={<MdNightlight />}
+          uncheckedIcon={<MdWbSunny />}
+        />
+        <S.HeaderEmail data-testid="email-field">{email}</S.HeaderEmail>
         <p data-testid="total-field">{totalField()}</p>
-      </div>
+      </S.HeaderLeftContainer>
     </S.HeaderContainer>
   );
 };
 
-export default Header;
+export default memo(Header);

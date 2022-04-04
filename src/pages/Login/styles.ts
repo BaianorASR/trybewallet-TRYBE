@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const LoginContainer = styled.section`
   display: flex;
@@ -17,13 +17,10 @@ export const LoginForm = styled.form`
 
   padding: 10px;
   width: 300px;
-  box-shadow: 0.5px 0.6px 0.9px hsl(0deg 0% 63% / 0.36),
-    1.5px 1.9px 2.7px -0.8px hsl(0deg 0% 63% / 0.36),
-    3.8px 4.7px 6.8px -1.7px hsl(0deg 0% 63% / 0.36),
-    9.2px 11.4px 16.5px -2.5px hsl(0deg 0% 63% / 0.36);
+  box-shadow: ${({ theme }) => theme.shadow};
   border-radius: 5px;
 
-  background-color: ${props => props.theme.secondary};
+  background-color: ${({ theme }) => theme.secondary};
 `;
 
 export const LoginTitle = styled.h1`
@@ -42,31 +39,32 @@ export const LoginLabel = styled.label.attrs(props => ({
   flex-direction: column;
   gap: 5px;
 
-  color: ${props => props.theme.text.default};
+  color: ${({ theme }) => theme.text.default};
 `;
 
 export const LoginInput = styled.input.attrs(props => ({
   type: props.type,
   id: props.id,
 }))`
-  padding: 10px;
+  ${({ theme }) => css`
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
 
-  border: none;
-  border-radius: 5px;
-  outline: 1px solid ${props => props.theme.secondary};
+    font-size: 1.1rem;
+    outline: 1px solid ${theme.secondary};
 
-  background-color: ${props => props.theme.background};
-  color: ${props => props.theme.primary};
+    background-color: ${theme.background};
+    color: ${theme.primary};
 
-  font-size: 1.1rem;
+    &::placeholder {
+      color: ${theme.secondary};
+    }
 
-  &::placeholder {
-    color: ${props => props.theme.secondary};
-  }
-
-  &:focus {
-    outline: 2px solid ${props => props.theme.secondary};
-  }
+    &:focus {
+      outline: 2px solid ${theme.secondary};
+    }
+  `}
 `;
 
 export const LoginButton = styled.button.attrs({ type: 'button' })`
@@ -76,9 +74,7 @@ export const LoginButton = styled.button.attrs({ type: 'button' })`
 
   border: none;
   border-radius: 5px;
-  box-shadow: 0.5px 0.6px 0.9px hsl(0deg 0% 63% / 0.34),
-    0.8px 0.9px 1.4px -1.2px hsl(0deg 0% 63% / 0.34),
-    1.8px 2.3px 3.3px -2.5px hsl(0deg 0% 63% / 0.34);
+  box-shadow: ${({ theme }) => theme.shadow};
 
   background-color: ${props => props.theme.colors.blue};
   color: ${props => props.theme.background};

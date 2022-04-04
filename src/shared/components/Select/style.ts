@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SelectControl = styled.div`
   display: flex;
@@ -21,4 +21,23 @@ export const Select = styled.select`
   border: none;
   outline: none;
   border-radius: 0%.1rem;
+`;
+
+export const ErrTooltip = styled.span`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.red};
+    color: ${theme.text.alt};
+    border: 1px solid ${theme.secondary};
+  `}
+  top: -10px;
+  border-radius: 2px;
+  right: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.2rem;
+  position: absolute;
+  z-index: 2;
 `;
